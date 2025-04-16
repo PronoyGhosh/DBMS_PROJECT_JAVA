@@ -53,7 +53,7 @@ public class DBHostel {
                 + "Student_joinDate, Student_gender, Student_contact, Parent_contact, Student_email, Parent_email, Student_address) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
         
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*");
         var pstmt = conn.prepareStatement(query);
         pstmt.setString(1, id);
         pstmt.setString(2, name);
@@ -79,7 +79,7 @@ public class DBHostel {
                 + "Student_contact = ?, Parent_contact = ?, Student_email = ?, "
                 + "Parent_email = ?, Student_address = ? WHERE Student_id = ?";
 
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*"");
         var pstmt = conn.prepareStatement(query);
         pstmt.setString(1, name);
         pstmt.setString(2, department);
@@ -100,7 +100,7 @@ public class DBHostel {
     protected static void deleteStudentData(String id) throws SQLException {
         String query = "DELETE FROM StudentData WHERE Student_id = ?";
 
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*");
         var pstmt = conn.prepareStatement(query);
         pstmt.setString(1, id);
         
@@ -113,7 +113,7 @@ public class DBHostel {
         model.setRowCount(0);
         String query = "SELECT * FROM StudentData WHERE " + column + " LIKE ?";
         
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*");
         var pstmt = conn.prepareStatement(query);
         pstmt.setString(1, "%" + searchTerm + "%");
         ResultSet rs = pstmt.executeQuery();
@@ -142,7 +142,7 @@ public class DBHostel {
         model.setRowCount(0);
         String query = "SELECT * FROM StudentData";
         
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*");
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
