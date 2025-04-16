@@ -49,7 +49,7 @@ public class DBEmployee {
                 + "emp_joinDate, emp_gender, emp_contact, emp_email) "
                 + "VALUES (?, ?, ?, ?, ?, ?)";
         
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*");
         var pstmt = conn.prepareStatement(query);
         pstmt.setString(1, id);
         pstmt.setString(2, name);
@@ -71,7 +71,7 @@ public class DBEmployee {
                 + "emp_contact = ?, "
                 + "emp_email = ?, WHERE emp_id = ?";
 
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*");
         var pstmt = conn.prepareStatement(query);
         pstmt.setString(1, name);
         pstmt.setString(2, contact);
@@ -88,7 +88,7 @@ public class DBEmployee {
     protected static void deleteStudentData(String id) throws SQLException {
         String query = "DELETE FROM EmpData WHERE emp_id = ?";
 
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*");
         var pstmt = conn.prepareStatement(query);
         pstmt.setString(1, id);
         
@@ -101,7 +101,7 @@ public class DBEmployee {
         model.setRowCount(0);
         String query = "SELECT * FROM EmpData WHERE " + column + " LIKE ?";
         
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*");
         var pstmt = conn.prepareStatement(query);
         pstmt.setString(1, "%" + searchTerm + "%");
         ResultSet rs = pstmt.executeQuery();
@@ -126,7 +126,7 @@ public class DBEmployee {
         model.setRowCount(0);
         String query = "SELECT * FROM EmpData";
         
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hosteljava", "root", "password");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/*DBNAME*", "*USERNAME*", "*PASSWORD*"");
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
